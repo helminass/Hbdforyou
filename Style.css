@@ -1,0 +1,203 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e1e2f, #3a3a5a);
+  color: white;
+}
+
+/* 🌌 bintang */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gerak 60s linear infinite;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes gerak {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* layout */
+#app {
+  display: flex;
+  width: 300%;
+  transition: 1s;
+}
+
+.scene {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  padding-top: 120px;
+}
+
+/* glow text */
+.glow {
+  font-family: 'Pacifico', cursive;
+  text-shadow:
+    0 0 10px #ff4b5c,
+    0 0 20px #ff4b5c,
+    0 0 40px #ff4b5c;
+}
+
+/* fade text */
+.fade {
+  opacity: 0;
+  animation: fadeUp 2s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* button */
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4b5c;
+  color: white;
+  cursor: pointer;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+  transition: 1s;
+  pointer-events: auto;
+}
+
+/* typing */
+#typing {
+  min-height: 60px;
+  margin-top: 20px;
+}
+
+.hologram {
+  font-family: 'Pacifico', cursive;
+  color: #ffff;
+  text-shadow:
+    0 0 5px #ff4b5c,
+    0 0 10px #ff4b5c,
+    0 0 20px #ff4b5c,
+    0 0 40px #ff4b5c;
+
+  position: relative;
+  animation: flicker 2s infinite alternate;
+}
+
+/* efek kedip */
+@keyframes flicker {
+  0% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+.hologram::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+.hologram {
+  animation: flicker 2s infinite alternate, glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}
+
+/* surat */
+#surat {
+  background: rgba(255,255,255,0.1);
+  font-size: 10px;
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+#surat.show {
+  transform: scale(1);
+}
+
+/* foto */
+#foto {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+
+#foto.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 🎈 balon */
+.balon {
+  position: fixed;
+  bottom: -50px;
+  animation: naik linear;
+}
+
+@keyframes naik {
+  to {
+    transform: translateY(-110vh);
+  }
+}
+
+/* 🎆 kembang api */
+.api {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: ledak 1s ease-out;
+}
+
+@keyframes ledak {
+  0% { transform: translateY(0); }
+  100% {
+    transform: translateY(-300px) scale(4);
+    opacity: 0;
+  }
+}
