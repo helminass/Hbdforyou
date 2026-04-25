@@ -1,3 +1,8 @@
+@media screen and (max-width: 481px) {
+    /* CSS untuk HP di sini */
+}
+
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
